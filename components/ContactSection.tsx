@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, ExternalLink, ArrowRight } from 'lucide-react';
+import { Mail, Link, ExternalLink, ArrowRight } from 'lucide-react';
 import Button from './Button';
 
 export default function ContactSection() {
@@ -40,13 +42,13 @@ export default function ContactSection() {
       color: 'from-red-500 to-pink-500',
     },
     {
-      icon: Github,
+      icon: Link,
       label: 'GitHub',
       href: 'https://github.com/Toheed-Ahmed',
       color: 'from-gray-700 to-gray-900',
     },
     {
-      icon: Linkedin,
+      icon: Link,
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/toheed-ahmed-7aa7162b4',
       color: 'from-blue-600 to-blue-800',

@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Link } from 'lucide-react';
 import Button from './Button';
 
 interface Project {
@@ -161,7 +163,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               className="flex-1"
             >
               <Button variant="secondary" size="sm" className="w-full justify-center">
-                <Github size={16} />
+                <Link size={16} />
                 Code
               </Button>
             </motion.a>
@@ -225,7 +227,7 @@ export default function ProjectsSection() {
               whileTap={{ scale: 0.95 }}
             >
               <Button variant="outline">
-                <Github size={20} />
+                <Link size={20} />
                 View All Projects
               </Button>
             </motion.a>

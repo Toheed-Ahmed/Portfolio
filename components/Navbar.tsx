@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Linkedin, Download } from 'lucide-react';
+import { ExternalLink, Link, Download } from 'lucide-react';
 import Button from './Button';
 
 const scrollToSection = (id: string) => {
@@ -75,7 +77,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               className="p-2 rounded-lg hover-glow transition-all"
             >
-              <Github size={20} />
+              <Link size={20} />
             </motion.a>
             <motion.a
               href="https://linkedin.com/in/toheed-ahmed-7aa7162b4"
@@ -85,7 +87,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               className="p-2 rounded-lg hover-glow transition-all"
             >
-              <Linkedin size={20} />
+              <Link size={20} />
             </motion.a>
             <motion.a
               href="/resume.pdf"

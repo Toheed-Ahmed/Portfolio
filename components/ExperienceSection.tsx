@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Briefcase } from 'lucide-react';
@@ -119,7 +121,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
 
       {/* Timeline center dot */}
       <motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-600 border-4 border-dark-bg hidden md:block"
+        className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-600 border-4 border-slate-950 hidden md:block"
         whileHover={{ scale: 1.5, boxShadow: '0 0 20px rgba(37, 99, 235, 0.6)' }}
       />
     </motion.div>

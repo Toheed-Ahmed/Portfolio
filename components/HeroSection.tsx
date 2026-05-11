@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { ArrowRight, Download, Link, ExternalLink } from 'lucide-react';
 import Button from './Button';
 
 export default function HeroSection() {
@@ -103,7 +105,7 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button variant="outline" size="lg">
-                  <Github size={20} />
+                  <Link size={20} />
                   GitHub
                 </Button>
               </motion.a>
@@ -119,7 +121,7 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.95 }}
                 className="p-3 glass rounded-lg hover:glow-blue transition-all"
               >
-                <Github size={24} />
+                <Link size={24} />
               </motion.a>
               <motion.a
                 href="https://linkedin.com/in/toheed-ahmed-7aa7162b4"
@@ -129,7 +131,7 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.95 }}
                 className="p-3 glass rounded-lg hover:glow-blue transition-all"
               >
-                <Linkedin size={24} />
+                <Link size={24} />
               </motion.a>
               <motion.a
                 href="mailto:kalwartoheed060@gmail.com"

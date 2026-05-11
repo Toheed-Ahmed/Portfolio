@@ -54,7 +54,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${inter.className} bg-dark-bg text-slate-100`}>
+      <body className={`${inter.className} bg-slate-950 text-slate-100`}>
         {children}
       </body>
     </html>

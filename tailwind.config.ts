@@ -10,7 +10,6 @@ const config: Config = {
       colors: {
         primary: "#2563EB",
         "primary-dark": "#0A2540",
-        "dark-bg": "#111827",
         "light-bg": "#F8FAFC",
       },
       backgroundImage: {
