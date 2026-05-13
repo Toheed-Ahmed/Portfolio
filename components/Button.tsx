@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 interface ButtonProps {
   href?: string;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
@@ -24,12 +24,12 @@ export default function Button({
   target,
   rel,
 }: ButtonProps) {
-  const baseStyles = 'font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 justify-center';
+  const baseStyles = 'font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 justify-center cursor-pointer';
   
   const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 hover-glow',
-    secondary: 'bg-slate-700 text-white hover:bg-slate-600 hover-glow',
-    outline: 'border border-blue-600 text-blue-300 hover:bg-blue-600 hover:text-white',
+    primary: 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/50 active:scale-95',
+    secondary: 'bg-gradient-to-r from-slate-700 to-slate-800 text-white hover:from-slate-600 hover:to-slate-700',
+    outline: 'border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:bg-opacity-10 hover:shadow-lg hover:shadow-cyan-500/30',
   };
 
   const sizes = {

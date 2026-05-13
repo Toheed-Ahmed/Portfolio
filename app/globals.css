@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================
+   PREMIUM DARK MODE BASE
+   ============================================ */
 
 * {
   scroll-behavior: smooth;
@@ -11,14 +17,27 @@ html {
 }
 
 body {
-  background-color: #0f172a;
+  background-color: #020617;
   color: #f1f5f9;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-attachment: fixed;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.06) 0%, transparent 50%);
 }
 
-/* Custom Scrollbar */
+/* Heading font - premium look */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR - PREMIUM
+   ============================================ */
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -26,82 +45,105 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 5px;
+  background: linear-gradient(180deg, #0ea5e9, #06b6d4);
+  border-radius: 10px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
+  background: linear-gradient(180deg, #0284c7, #0891b2);
   background-clip: content-box;
 }
 
-/* Smooth gradient background */
-.gradient-bg {
-  background: linear-gradient(
-    135deg,
-    rgba(10, 37, 64, 0.4) 0%,
-    rgba(37, 99, 235, 0.1) 50%,
-    rgba(10, 37, 64, 0.4) 100%
-  );
-}
+/* ============================================
+   PREMIUM GLASSMORPHISM EFFECTS
+   ============================================ */
 
-/* Glassmorphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px) saturate(100%);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .glass-lg {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(16px) saturate(100%);
+  border: 1px solid rgba(6, 182, 212, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 32px rgba(6, 182, 212, 0.1);
 }
 
-/* Glow effect */
-.glow-blue {
-  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+.glass-xl {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(24px) saturate(100%);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 48px rgba(6, 182, 212, 0.12);
 }
 
-.glow-blue-lg {
-  box-shadow: 0 0 40px rgba(37, 99, 235, 0.4);
+/* ============================================
+   PREMIUM GLOW EFFECTS
+   ============================================ */
+
+.glow-sm {
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
 }
 
-/* Hover glow */
+.glow-md {
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.4);
+}
+
+.glow-lg {
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
+}
+
+.glow-xl {
+  box-shadow: 0 0 60px rgba(14, 165, 233, 0.6);
+}
+
+.hover-glow {
+  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.6);
 }
 
-/* Floating animation */
-.float-animation {
-  animation: float 6s ease-in-out infinite;
+/* ============================================
+   PREMIUM GRADIENTS
+   ============================================ */
+
+.gradient-primary {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
 }
 
-/* Text gradient */
-.text-gradient {
-  background: linear-gradient(
-    135deg,
-    #2563eb 0%,
-    #7c3aed 100%
-  );
+.gradient-primary-dark {
+  background: linear-gradient(135deg, #0284c7 0%, #0891b2 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Smooth transitions */
-.transition-smooth {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.gradient-text-alt {
+  background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Section heading styling */
+/* ============================================
+   PREMIUM TYPOGRAPHY
+   ============================================ */
+
 .section-heading {
   font-size: 2.25rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -113,44 +155,242 @@ body {
   }
 }
 
-/* Button styles */
+/* ============================================
+   PREMIUM BUTTON STYLES
+   ============================================ */
+
 .btn-primary {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  background-color: #2563eb;
-  color: #ffffff;
-  transition: background-color 0.3s ease;
+  transition: all 300ms ease;
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5);
 }
 
 .btn-secondary {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  border: 1px solid #2563eb;
-  color: #2563eb;
-  transition: all 0.3s ease;
+  border: 1.5px solid rgba(6, 182, 212, 0.5);
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.05);
+  transition: all 300ms ease;
 }
 
 .btn-secondary:hover {
-  background-color: #2563eb;
-  color: #ffffff;
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.8);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
-/* Card styling */
-.card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* ============================================
+   PREMIUM CARD STYLING
+   ============================================ */
+
+.card {
+  border-radius: 0.75rem;
+  backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  transition: all 500ms ease;
 }
 
-.card-hover:hover {
-  transform: translateY(-0.5rem);
+.card:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  background: rgba(15, 23, 42, 0.6);
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.15);
 }
 
-/* Loading animation */
+.card-interactive {
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   PREMIUM BADGE STYLES
+   ============================================ */
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #06b6d4;
+  transition: all 300ms ease;
+}
+
+.badge:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.6);
+}
+
+.badge-primary {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(14, 165, 233, 0.4);
+  color: #0ea5e9;
+}
+
+/* ============================================
+   LAYOUT & SPACING UTILITIES
+   ============================================ */
+
+.section-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-spacing {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* ============================================
+   PREMIUM ANIMATIONS
+   ============================================ */
+
+.float-animation {
+  animation: float 8s ease-in-out infinite;
+}
+
+.float-animation-slow {
+  animation: float 10s ease-in-out infinite;
+}
+
+.glow-animation {
+  animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   PREMIUM LINKS & HOVER STATES
+   ============================================ */
+
+a {
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.link-premium {
+  color: #06b6d4;
+  transition: color 300ms ease;
+}
+
+.link-premium:hover {
+  color: #0891b2;
+}
+
+/* ============================================
+   PREMIUM FORM STYLES
+   ============================================ */
+
+input, textarea, select {
+  background-color: rgba(30, 41, 59, 0.5);
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  transition: all 300ms ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #64748b;
+}
+
+/* ============================================
+   PREMIUM DIVIDER STYLES
+   ============================================ */
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #334155, transparent);
+}
+
+.divider-premium {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(6, 182, 212, 0.3),
+    transparent
+  );
+}
+
+/* ============================================
+   PREMIUM TRANSITIONS
+   ============================================ */
+
+.transition-smooth {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-premium {
+  transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

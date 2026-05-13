@@ -2,35 +2,54 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link, Mail } from 'lucide-react';
+import { Code, Share2, Mail, Heart, ArrowUp } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = [
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const socialLinks = [
     {
       label: 'GitHub',
       href: 'https://github.com/Toheed-Ahmed',
-      icon: Link,
+      icon: Code,
+      gradient: 'from-gray-600 to-gray-800',
     },
     {
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/toheed-ahmed-7aa7162b4',
-      icon: Link,
+      icon: Share2,
+      gradient: 'from-blue-600 to-blue-800',
     },
     {
       label: 'Email',
       href: 'mailto:kalwartoheed060@gmail.com',
       icon: Mail,
+      gradient: 'from-red-500 to-pink-600',
     },
   ];
 
+  const footerLinks = [
+    { label: 'Home', href: '#' },
+    { label: 'About', href: '#about' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
   return (
-    <footer className="relative border-t border-slate-700 border-opacity-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative border-t border-slate-700 border-opacity-30 bg-slate-950 bg-opacity-50 backdrop-blur-sm">
+      {/* Background accent */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{
+        background: 'radial-gradient(circle at 50% 100%, rgba(6, 182, 212, 0.4), transparent 70%)',
+      }} />
+
+      <div className="relative section-container py-16 md:py-20">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          {/* Brand Column */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -38,66 +57,82 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold text-gradient">Toheed</h3>
-            <p className="text-sm text-slate-400">
-              Full Stack Developer crafting scalable web solutions
+            <motion.h3
+              className="text-3xl font-bold gradient-text"
+              whileHover={{ scale: 1.05 }}
+            >
+              Toheed
+            </motion.h3>
+            <p className="text-sm text-slate-400 leading-relaxed font-light">
+              Full Stack Engineer crafting premium digital experiences and solving complex problems with elegant code.
             </p>
+            <div className="flex items-center gap-2 pt-2">
+              <span className="text-xs text-slate-500">Building things since 2022</span>
+            </div>
           </motion.div>
 
           {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ delay: 0.1, duration: 0.8 }}
             viewport={{ once: true }}
+            className="space-y-4"
           >
-            <h4 className="text-sm font-semibold text-slate-100 mb-4 uppercase tracking-wider">Quick Links</h4>
-            <ul className="space-y-2">
-              {['About', 'Projects', 'Skills', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
+            <h4 className="font-semibold text-slate-100 text-sm uppercase tracking-wider">Navigate</h4>
+            <div className="space-y-2">
+              {footerLinks.map((link) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  className="block text-sm text-slate-400 hover:text-cyan-400 transition-colors font-light"
+                  whileHover={{ x: 4 }}
+                >
+                  → {link.label}
+                </motion.a>
               ))}
-            </ul>
+            </div>
           </motion.div>
 
           {/* Resources */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
+            className="space-y-4"
           >
-            <h4 className="text-sm font-semibold text-slate-100 mb-4 uppercase tracking-wider">Resources</h4>
-            <ul className="space-y-2">
-              {['Blog', 'GitHub', 'Resume', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
+            <h4 className="font-semibold text-slate-100 text-sm uppercase tracking-wider">Resources</h4>
+            <div className="space-y-2">
+              {[
+                { label: 'GitHub Repos', href: 'https://github.com/Toheed-Ahmed' },
+                { label: 'LinkedIn Profile', href: 'https://linkedin.com/in/toheed-ahmed-7aa7162b4' },
+              ].map((link) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm text-slate-400 hover:text-cyan-400 transition-colors font-light"
+                  whileHover={{ x: 4 }}
+                >
+                  → {link.label}
+                </motion.a>
               ))}
-            </ul>
+            </div>
           </motion.div>
 
           {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
             viewport={{ once: true }}
+            className="space-y-4"
           >
-            <h4 className="text-sm font-semibold text-slate-100 mb-4 uppercase tracking-wider">Follow</h4>
-            <div className="flex gap-4">
-              {footerLinks.map((link) => {
+            <h4 className="font-semibold text-slate-100 text-sm uppercase tracking-wider">Connect</h4>
+            <div className="flex gap-3">
+              {socialLinks.map((link) => {
                 const Icon = link.icon;
                 return (
                   <motion.a
@@ -105,8 +140,8 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg glass hover:bg-blue-600 hover:bg-opacity-20 hover-glow transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`p-2.5 rounded-lg bg-gradient-to-br ${link.gradient} bg-opacity-10 border border-slate-700 border-opacity-50 text-slate-300 hover:border-opacity-100 transition-all`}
+                    whileHover={{ scale: 1.1, rotate: 8 }}
                     whileTap={{ scale: 0.95 }}
                     title={link.label}
                   >
@@ -119,28 +154,55 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-slate-700 border-opacity-20 mb-8"></div>
+        <div className="divider-premium my-8" />
 
-        {/* Bottom Footer */}
-        <motion.div
-          className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <p>© {currentYear} Toheed Ahmed. All rights reserved.</p>
-          <p className="text-center">Crafted with passion using modern technologies</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-blue-400 transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="hover:text-blue-400 transition-colors">
-              Terms
-            </a>
-          </div>
-        </motion.div>
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Copyright */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-sm text-slate-500 font-light flex items-center gap-2"
+          >
+            <span>© {currentYear} Toheed Ahmed.</span>
+            <span className="flex items-center gap-1">
+              Made with
+              <motion.span
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <Heart size={16} className="text-red-500" />
+              </motion.span>
+              for the web.
+            </span>
+          </motion.div>
+
+          {/* Status */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-sm text-slate-500 font-light"
+          >
+            ✨ Open for opportunities and collaborations
+          </motion.div>
+
+          {/* Scroll to Top */}
+          <motion.button
+            onClick={scrollToTop}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-2.5 rounded-lg glass hover:glow-md transition-all"
+            title="Scroll to top"
+          >
+            <ArrowUp size={20} className="text-cyan-400" />
+          </motion.button>
+        </div>
       </div>
     </footer>
   );
 }
+

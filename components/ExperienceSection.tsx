@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Briefcase } from 'lucide-react';
+import { Award, Briefcase, Star, Target } from 'lucide-react';
 
 interface Experience {
   id: number;
@@ -12,6 +12,8 @@ interface Experience {
   description: string;
   details: string[];
   icon: React.ReactNode;
+  year?: string;
+  gradient: string;
 }
 
 const experiences: Experience[] = [
@@ -20,14 +22,16 @@ const experiences: Experience[] = [
     type: 'leadership',
     title: 'Campus Director',
     organization: 'Hult Prize MUET',
-    description: 'Leading innovation and entrepreneurship at MUET',
+    description: 'Leading innovation and entrepreneurship initiatives',
     details: [
-      'Led a team of 20+ members',
-      'Organized innovation-driven events',
-      'Managed execution and coordination',
-      'Fostered startup culture on campus',
+      'Directed a team of 20+ members across multiple projects',
+      'Organized innovation-driven events and competitions',
+      'Managed execution, coordination, and strategic planning',
+      'Fostered startup culture and entrepreneurial mindset',
     ],
-    icon: <Briefcase size={24} />,
+    icon: <Briefcase size={28} />,
+    year: '2024',
+    gradient: 'from-cyan-500 to-blue-600',
   },
   {
     id: 2,
@@ -36,40 +40,46 @@ const experiences: Experience[] = [
     organization: 'Harvard Business School',
     description: 'International leadership development program',
     details: [
-      'Faculty-led program from Harvard Business School',
-      'International collaboration with peers',
-      'Leadership and strategy development',
-      'Network with global leaders',
+      'Faculty-led program from prestigious Harvard Business School',
+      'International collaboration with peers from 50+ countries',
+      'Developed leadership and strategic thinking frameworks',
+      'Built network with global leaders and changemakers',
     ],
-    icon: <Award size={24} />,
+    icon: <Award size={28} />,
+    year: '2024',
+    gradient: 'from-purple-500 to-pink-600',
   },
   {
     id: 3,
     type: 'achievement',
     title: 'Best Delegate Award',
     organization: 'WHO Committee MUET MUN 2025',
-    description: 'Recognized for outstanding diplomatic performance',
+    description: 'Outstanding diplomatic performance recognition',
     details: [
-      'Won best delegate in WHO committee',
-      'Demonstrated strong public speaking skills',
-      'Active participation and diplomacy',
-      'Represented national interests effectively',
+      'Awarded best delegate in highly competitive WHO committee',
+      'Demonstrated exceptional public speaking and diplomacy skills',
+      'Represented national interests with strategic thinking',
+      'Prepared comprehensive position papers and proposals',
     ],
-    icon: <Award size={24} />,
+    icon: <Star size={28} />,
+    year: '2025',
+    gradient: 'from-yellow-500 to-orange-600',
   },
   {
     id: 4,
     type: 'achievement',
-    title: 'Certified Web Developer',
-    organization: 'Sukkur IBA University 2025',
+    title: 'Certified Full Stack Developer',
+    organization: 'Sukkur IBA University',
     description: 'Professional web development certification',
     details: [
-      'Full-stack web development certification',
-      'Modern technologies and frameworks',
-      'Industry-standard best practices',
-      'Portfolio of completed projects',
+      'Completed comprehensive full-stack web development certification',
+      'Mastered modern frameworks, libraries, and best practices',
+      'Built production-quality projects from concept to deployment',
+      'Demonstrated proficiency across the entire development stack',
     ],
-    icon: <Award size={24} />,
+    icon: <Target size={28} />,
+    year: '2025',
+    gradient: 'from-green-500 to-emerald-600',
   },
 ];
 
@@ -77,133 +87,142 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
   return (
     <motion.div
       custom={index}
-      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.2, duration: 0.8 }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.12, duration: 0.8 }}
       viewport={{ once: true, margin: '-100px' }}
-      className={`relative ${index % 2 === 0 ? 'md:text-right' : ''}`}
+      whileHover={{ y: -8 }}
+      className="relative"
     >
-      <div className="md:w-1/2 md:mx-auto px-4">
-        <div className="glass-lg p-6 rounded-2xl group hover:bg-opacity-20 transition-all">
-          {/* Icon and Title */}
-          <div className="flex items-start gap-4">
-            <motion.div
-              className="p-3 rounded-lg bg-blue-600 bg-opacity-20 border border-blue-500 border-opacity-30 flex-shrink-0 text-blue-400 group-hover:text-blue-300 transition-colors"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              {experience.icon}
-            </motion.div>
+      {/* Timeline connector */}
+      {index < experiences.length - 1 && (
+        <div className="hidden md:block absolute left-12 top-24 w-1 h-16 bg-gradient-to-b from-cyan-500 to-transparent" />
+      )}
 
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors">
-                {experience.title}
-              </h3>
-              <p className="text-sm text-blue-400 font-semibold">{experience.organization}</p>
-              <p className="text-sm text-slate-400 mt-1">{experience.description}</p>
-            </div>
+      <div className="glass-lg p-8 rounded-2xl border border-slate-700 border-opacity-50 hover:border-opacity-100 transition-all group">
+        {/* Timeline dot */}
+        <motion.div
+          className={`absolute -left-6 md:left-1/2 md:-translate-x-1/2 md:top-8 w-12 h-12 rounded-full bg-gradient-to-br ${experience.gradient} border-4 border-slate-950 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}
+          whileHover={{ scale: 1.2 }}
+        >
+          <div className="text-white">
+            {experience.icon}
+          </div>
+        </motion.div>
+
+        {/* Year badge */}
+        {experience.year && (
+          <motion.div
+            className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${experience.gradient} bg-opacity-15 border border-slate-700 border-opacity-50 text-slate-300`}
+            whileHover={{ scale: 1.05 }}
+          >
+            {experience.year}
+          </motion.div>
+        )}
+
+        <div className="md:ml-8 space-y-4">
+          {/* Header */}
+          <div className="space-y-2">
+            <h3 className="text-2xl font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
+              {experience.title}
+            </h3>
+            <p className={`text-sm font-semibold bg-gradient-to-r ${experience.gradient} bg-opacity-60 text-transparent bg-clip-text`}>
+              {experience.organization}
+            </p>
+            <p className="text-slate-400 font-light">{experience.description}</p>
           </div>
 
           {/* Details */}
-          <ul className="mt-4 space-y-2 ml-16">
-            {experience.details.map((detail) => (
-              <motion.li
-                key={detail}
-                className="text-sm text-slate-300 flex items-start gap-2"
-                whileHover={{ x: 5 }}
-              >
-                <span className="text-blue-400 mt-1">•</span>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-800 bg-opacity-30 border border-slate-700 border-opacity-30">
+              <div className={`text-sm font-bold bg-gradient-to-r ${experience.gradient} bg-clip-text text-transparent flex-shrink-0 mt-0.5`}>
+                →
+              </div>
+              <p className="text-sm text-slate-300">{experience.details[0]}</p>
+            </div>
+            {experience.details.slice(1).map((detail, idx) => (
+              <div key={idx} className="flex items-start gap-2 text-sm text-slate-300">
+                <motion.span
+                  className="text-cyan-400 font-bold text-lg leading-tight flex-shrink-0 mt-0.5"
+                  whileHover={{ scale: 1.3 }}
+                >
+                  ·
+                </motion.span>
                 <span>{detail}</span>
-              </motion.li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
-
-      {/* Timeline center dot */}
-      <motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-600 border-4 border-slate-950 hidden md:block"
-        whileHover={{ scale: 1.5, boxShadow: '0 0 20px rgba(37, 99, 235, 0.6)' }}
-      />
     </motion.div>
   );
 };
 
 export default function ExperienceSection() {
-  const achievements = experiences.filter((e) => e.type === 'achievement');
-  const leadership = experiences.filter((e) => e.type === 'leadership');
-
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="experience" className="section-spacing relative">
+      {/* Background accent */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl opacity-5 pointer-events-none" style={{
+        background: 'radial-gradient(circle, rgba(14, 165, 233, 0.4), transparent)',
+      }} />
+
+      <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-12"
+          className="space-y-16"
         >
-          {/* Section Title */}
-          <div className="space-y-4">
-            <h2 className="section-heading">Experience & Leadership</h2>
-            <div className="w-12 h-1 bg-gradient-to-r from-blue-600 to-purple-600"></div>
-          </div>
-
-          {/* Leadership Section */}
-          <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-100">Leadership Roles</h3>
-            <div className="space-y-6">
-              {leadership.map((exp, idx) => (
-                <ExperienceCard key={exp.id} experience={exp} index={idx} />
-              ))}
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true, margin: '-100px' }}
+            className="space-y-6 max-w-3xl"
+          >
+            <div className="flex items-center gap-3">
+              <Briefcase size={24} className="text-cyan-400" />
+              <span className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">Journey</span>
             </div>
+
+            <h2 className="section-heading text-4xl md:text-5xl">
+              Experience & Achievements
+            </h2>
+
+            <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full" />
+
+            <p className="text-lg text-slate-400 leading-relaxed max-w-2xl font-light">
+              A timeline of my professional journey, leadership initiatives, and key achievements that have shaped my career and continue to drive my growth.
+            </p>
+          </motion.div>
+
+          {/* Timeline */}
+          <div className="space-y-8 md:space-y-12">
+            {experiences.map((experience, index) => (
+              <ExperienceCard key={experience.id} experience={experience} index={index} />
+            ))}
           </div>
 
-          {/* Achievements Section */}
-          <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-100">Achievements & Certifications</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {achievements.map((exp, idx) => (
-                <motion.div
-                  key={exp.id}
-                  custom={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1, duration: 0.8 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                >
-                  <div className="glass-lg p-6 rounded-2xl group hover:bg-opacity-20 transition-all h-full">
-                    <div className="flex items-start gap-4">
-                      <motion.div
-                        className="p-3 rounded-lg bg-amber-600 bg-opacity-20 border border-amber-500 border-opacity-30 flex-shrink-0 text-amber-400 group-hover:text-amber-300 transition-colors"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
-                        {exp.icon}
-                      </motion.div>
-
-                      <div>
-                        <h4 className="text-lg font-bold text-slate-100 group-hover:text-amber-400 transition-colors">
-                          {exp.title}
-                        </h4>
-                        <p className="text-sm text-amber-400 font-semibold">{exp.organization}</p>
-                      </div>
-                    </div>
-
-                    <p className="mt-3 text-sm text-slate-300">{exp.description}</p>
-                    <ul className="mt-3 space-y-1">
-                      {exp.details.slice(0, 2).map((detail) => (
-                        <li key={detail} className="text-xs text-slate-400 flex items-start gap-2">
-                          <span className="text-amber-400 mt-1">✓</span>
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          {/* CTA Footer */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            viewport={{ once: true, margin: '-100px' }}
+            className="glass-lg p-10 rounded-2xl border border-cyan-500 border-opacity-20 hover:border-opacity-40 transition-all text-center space-y-4"
+          >
+            <h3 className="text-2xl font-bold text-slate-100">
+              Always Growing, Always Learning
+            </h3>
+            <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Each experience has taught me something valuable about leadership, innovation, and the power of collaborative work. I'm excited about what comes next.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </section>
   );
 }
+
